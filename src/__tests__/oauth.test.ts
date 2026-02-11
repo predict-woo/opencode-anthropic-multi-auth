@@ -64,7 +64,6 @@ describe("oauth", () => {
 
     expect(result.url.startsWith("https://claude.ai/oauth/authorize")).toBe(true);
     expect(result.verifier).toBe("verifier-123");
-    expect(result.state).toBeTypeOf("string");
   });
 
   it("authorize(console) generates URL on console.anthropic.com domain", async () => {
@@ -72,20 +71,20 @@ describe("oauth", () => {
 
     expect(result.url.startsWith("https://console.anthropic.com/oauth/authorize")).toBe(true);
     expect(result.verifier).toBe("verifier-123");
-    expect(result.state).toBeTypeOf("string");
   });
 
   it("authorize URL includes required OAuth and PKCE parameters", async () => {
     const result = await authorize("max");
     const url = new URL(result.url);
 
+    expect(url.searchParams.get("code")).toBe("true");
     expect(url.searchParams.get("response_type")).toBe("code");
     expect(url.searchParams.get("client_id")).toBe("9d1c250a-e61b-44d9-88ed-5944d1962f5e");
-    expect(url.searchParams.get("redirect_uri")).toBe("http://localhost:19832/oauth/callback");
+    expect(url.searchParams.get("redirect_uri")).toBe("https://console.anthropic.com/oauth/code/callback");
     expect(url.searchParams.get("scope")).toBe("org:create_api_key user:profile user:inference");
     expect(url.searchParams.get("code_challenge")).toBe("challenge-123");
     expect(url.searchParams.get("code_challenge_method")).toBe("S256");
-    expect(url.searchParams.get("state")).toBe(result.state);
+    expect(url.searchParams.get("state")).toBe(result.verifier);
   });
 
   it("exchange calls token endpoint with authorization_code payload", async () => {
@@ -106,14 +105,14 @@ describe("oauth", () => {
     expect(url).toBe("https://console.anthropic.com/v1/oauth/token");
     expect(init.method).toBe("POST");
     expect(init.headers).toEqual({ "Content-Type": "application/json" });
-    expect(JSON.parse(String(init.body))).toEqual({
-      code: "auth-code",
-      state: "state-abc",
-      grant_type: "authorization_code",
-      client_id: "9d1c250a-e61b-44d9-88ed-5944d1962f5e",
-      redirect_uri: "http://localhost:19832/oauth/callback",
-      code_verifier: "verifier-xyz",
-    });
+     expect(JSON.parse(String(init.body))).toEqual({
+       code: "auth-code",
+       state: "state-abc",
+       grant_type: "authorization_code",
+       client_id: "9d1c250a-e61b-44d9-88ed-5944d1962f5e",
+       redirect_uri: "https://console.anthropic.com/oauth/code/callback",
+       code_verifier: "verifier-xyz",
+     });
     nowSpy.mockRestore();
   });
 

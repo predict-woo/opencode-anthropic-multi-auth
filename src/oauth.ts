@@ -1,10 +1,9 @@
-import crypto from "node:crypto";
 import { generatePKCE } from "@openauthjs/openauth/pkce";
 import { saveAccounts } from "./storage";
 import type { StoredAccount } from "./types";
 
 const CLIENT_ID = "9d1c250a-e61b-44d9-88ed-5944d1962f5e";
-const REDIRECT_URI = "http://localhost:19832/oauth/callback";
+const REDIRECT_URI = "https://console.anthropic.com/oauth/code/callback";
 const MAX_AUTHORIZE_URL = "https://claude.ai/oauth/authorize";
 const CONSOLE_AUTHORIZE_URL = "https://console.anthropic.com/oauth/authorize";
 const TOKEN_ENDPOINT = "https://console.anthropic.com/v1/oauth/token";
@@ -17,24 +16,22 @@ type ExchangeResult =
 export async function authorize(type: "max" | "console"): Promise<{
   url: string;
   verifier: string;
-  state: string;
 }> {
   const pkce = await generatePKCE();
-  const state = crypto.randomUUID();
 
   const url = new URL(type === "console" ? CONSOLE_AUTHORIZE_URL : MAX_AUTHORIZE_URL);
-  url.searchParams.set("response_type", "code");
+  url.searchParams.set("code", "true");
   url.searchParams.set("client_id", CLIENT_ID);
+  url.searchParams.set("response_type", "code");
   url.searchParams.set("redirect_uri", REDIRECT_URI);
   url.searchParams.set("scope", SCOPE);
-  url.searchParams.set("state", state);
   url.searchParams.set("code_challenge", pkce.challenge);
   url.searchParams.set("code_challenge_method", "S256");
+  url.searchParams.set("state", pkce.verifier);
 
   return {
     url: url.toString(),
     verifier: pkce.verifier,
-    state,
   };
 }
 
