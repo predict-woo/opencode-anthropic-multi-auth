@@ -242,7 +242,7 @@ export const AnthropicMultiAuthPlugin: Plugin = async ({ client }) => {
             const { url, verifier } = await authorize("max");
             return {
               url,
-              instructions: "Open the URL above and paste the code below",
+              instructions: "Paste the authorization code here: ",
               method: "code" as const,
               async callback(code: string) {
                 const result = await exchange(code, verifier);

@@ -1,14 +1,11 @@
 export const TOOL_PREFIX = "mcp_";
 
 const REQUIRED_BETAS = [
+  "oauth-2025-04-20",
   "interleaved-thinking-2025-05-14",
-  "code-execution-2025-05-22",
-  "extended-thinking-2025-04-30",
-  "mcp-client-2025-04-04",
-  "prompt-caching-2025-04-30",
 ];
 
-const SYSTEM_IDENTITY_PREFIX = "You are Claude Code made by Anthropic. ";
+const SYSTEM_IDENTITY_PREFIX = "You are Claude Code, Anthropic's official CLI for Claude.";
 
 function sanitizeText(text: string): string {
   return text.replace(/OpenCode/g, "Claude Code").replace(/(?<!\/)opencode/gi, "Claude");
@@ -70,7 +67,7 @@ export function transformRequestBody(bodyString: string | null | undefined): str
           if (
             block &&
             typeof block === "object" &&
-            (block.type === "tool_use" || block.type === "tool_result") &&
+            block.type === "tool_use" &&
             typeof block.name === "string"
           ) {
             return {
@@ -147,12 +144,13 @@ export function transformRequestUrl(input: string | URL | Request): string | URL
   return new Request(url.toString(), input);
 }
 
-export function createSystemTransformHook(): (system: string) => string {
-  return (system: string) => {
-    const sanitized = sanitizeText(system);
-    if (sanitized.startsWith(SYSTEM_IDENTITY_PREFIX)) {
-      return sanitized;
+export function createSystemTransformHook(): (input: any, output: any) => void {
+  return (input: any, output: any) => {
+    if (input.model?.providerID === "anthropic") {
+      output.system.unshift(SYSTEM_IDENTITY_PREFIX);
+      if (output.system[1]) {
+        output.system[1] = `${SYSTEM_IDENTITY_PREFIX}\n\n${output.system[1]}`;
+      }
     }
-    return `${SYSTEM_IDENTITY_PREFIX}${sanitized}`;
   };
 }

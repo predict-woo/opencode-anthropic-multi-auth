@@ -69,7 +69,13 @@ describe("integration", () => {
     const hooks = await AnthropicMultiAuthPlugin({ client } as any);
     const transform = (hooks as any)["experimental.chat.system.transform"];
     expect(typeof transform).toBe("function");
-    expect(transform("Hello")).toContain("Claude Code");
+
+    const input = { model: { providerID: "anthropic" } };
+    const output = { system: ["Hello"] };
+    transform(input, output);
+
+    expect(output.system[0]).toBe("You are Claude Code, Anthropic's official CLI for Claude.");
+    expect(output.system[1]).toBe("You are Claude Code, Anthropic's official CLI for Claude.\n\nHello");
   });
 
   it("returns two auth methods", async () => {

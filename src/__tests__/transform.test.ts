@@ -13,7 +13,7 @@ describe("transform", () => {
       tools: [{ name: "bash", description: "run shell" }, { name: "read" }],
     });
 
-    const transformed = JSON.parse(transformRequestBody(body));
+    const transformed = JSON.parse(transformRequestBody(body)!);
     expect(transformed.tools[0].name).toBe("mcp_bash");
     expect(transformed.tools[1].name).toBe("mcp_read");
   });
@@ -31,11 +31,11 @@ describe("transform", () => {
       ],
     });
 
-    const transformed = JSON.parse(transformRequestBody(body));
+    const transformed = JSON.parse(transformRequestBody(body)!);
     expect(transformed.messages[0].content[1].name).toBe("mcp_bash");
   });
 
-  it("transformRequestBody prefixes tool_result names in message blocks", () => {
+  it("transformRequestBody does not prefix tool_result names in message blocks", () => {
     const body = JSON.stringify({
       messages: [
         {
@@ -52,8 +52,8 @@ describe("transform", () => {
       ],
     });
 
-    const transformed = JSON.parse(transformRequestBody(body));
-    expect(transformed.messages[0].content[0].name).toBe("mcp_bash");
+    const transformed = JSON.parse(transformRequestBody(body)!);
+    expect(transformed.messages[0].content[0].name).toBe("bash");
   });
 
   it("transformRequestBody sanitizes system prompt OpenCode to Claude Code", () => {
@@ -61,7 +61,7 @@ describe("transform", () => {
       system: [{ type: "text", text: "OpenCode and opencode" }],
     });
 
-    const transformed = JSON.parse(transformRequestBody(body));
+    const transformed = JSON.parse(transformRequestBody(body)!);
     expect(transformed.system[0].text).toBe("Claude Code and Claude");
   });
 
@@ -75,7 +75,7 @@ describe("transform", () => {
       ],
     });
 
-    const transformed = JSON.parse(transformRequestBody(body));
+    const transformed = JSON.parse(transformRequestBody(body)!);
     expect(transformed.system[0].text).toBe("Use /path/to/opencode-foo and Claude elsewhere");
   });
 
@@ -104,7 +104,7 @@ describe("transform", () => {
     expect(headers.get("authorization")).toBe("Bearer access-123");
     expect(headers.get("user-agent")).toBe("claude-cli/2.1.2 (external, cli)");
     expect(headers.get("anthropic-beta")).toBe(
-      "interleaved-thinking-2025-05-14,code-execution-2025-05-22,extended-thinking-2025-04-30,mcp-client-2025-04-04,prompt-caching-2025-04-30",
+      "oauth-2025-04-20,interleaved-thinking-2025-05-14",
     );
     expect(headers.get("content-type")).toBe("application/json");
   });
@@ -131,7 +131,7 @@ describe("transform", () => {
     );
 
     expect(headers.get("anthropic-beta")).toBe(
-      "interleaved-thinking-2025-05-14,code-execution-2025-05-22,extended-thinking-2025-04-30,mcp-client-2025-04-04,prompt-caching-2025-04-30,custom-beta-1,custom-beta-2",
+      "oauth-2025-04-20,interleaved-thinking-2025-05-14,custom-beta-1,custom-beta-2",
     );
   });
 
@@ -144,11 +144,21 @@ describe("transform", () => {
     );
   });
 
-  it("createSystemTransformHook prepends identity and sanitizes OpenCode references", () => {
+  it("createSystemTransformHook matches anthropic-only system transform behavior", () => {
     const hook = createSystemTransformHook();
-    const output = hook("OpenCode powers opencode workflows");
+    const anthropicInput = { model: { providerID: "anthropic" } };
+    const anthropicOutput = { system: ["OpenCode powers opencode workflows"] };
+    hook(anthropicInput, anthropicOutput);
 
-    expect(output).toBe("You are Claude Code made by Anthropic. Claude Code powers Claude workflows");
-    expect(hook(output)).toBe(output);
+    expect(anthropicOutput.system).toEqual([
+      "You are Claude Code, Anthropic's official CLI for Claude.",
+      "You are Claude Code, Anthropic's official CLI for Claude.\n\nOpenCode powers opencode workflows",
+    ]);
+
+    const nonAnthropicInput = { model: { providerID: "openai" } };
+    const nonAnthropicOutput = { system: ["hello"] };
+    hook(nonAnthropicInput, nonAnthropicOutput);
+
+    expect(nonAnthropicOutput.system).toEqual(["hello"]);
   });
 });
