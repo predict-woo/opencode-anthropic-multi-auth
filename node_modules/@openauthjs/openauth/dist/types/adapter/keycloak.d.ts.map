@@ -1,0 +1,1 @@
+{"version":3,"file":"keycloak.d.ts","sourceRoot":"","sources":["../../../src/adapter/keycloak.ts"],"names":[],"mappings":"AAAA,OAAO,EAAiB,mBAAmB,EAAE,MAAM,aAAa,CAAA;AAEhE;;;;;;GAMG;AACH,MAAM,WAAW,cAAe,SAAQ,mBAAmB;IACzD;;;;OAIG;IACH,OAAO,EAAE,MAAM,CAAA;IACf;;;;;;;OAOG;IACH,KAAK,EAAE,MAAM,CAAA;CACd;AAED,wBAAgB,eAAe,CAAC,MAAM,EAAE,cAAc;;;;;;EASrD"}

@@ -1,0 +1,53 @@
+export declare function parseJWT(jwt: string): [header: object, payload: object, signature: Uint8Array, signatureMessage: Uint8Array];
+export declare function decodeJWT(jwt: string): object;
+export declare function encodeJWT(headerJSON: string, payloadJSON: string, signature: Uint8Array): string;
+export declare function createJWTSignatureMessage(headerJSON: string, payloadJSON: string): Uint8Array;
+export declare class JWTClaims {
+    private target;
+    constructor(target: object);
+    hasIssuer(): boolean;
+    issuer(): string;
+    hasSubject(): boolean;
+    subject(): string;
+    hasAudiences(): boolean;
+    audiences(): string[];
+    hasExpiration(): boolean;
+    expiration(): Date;
+    verifyExpiration(): boolean;
+    hasNotBefore(): boolean;
+    notBefore(): Date;
+    verifyNotBefore(): boolean;
+    hasIssuedAt(): boolean;
+    issuedAt(): Date;
+    hasJWTId(): boolean;
+    jwtId(): string;
+}
+export declare class JWSRegisteredHeaders {
+    private target;
+    constructor(target: object);
+    hasAlgorithm(): boolean;
+    algorithm(): string;
+    hasJWKSetURL(): boolean;
+    jwkSetURL(): string;
+    hasJWK(): boolean;
+    jwk(): string;
+    hasKeyId(): boolean;
+    keyId(): string;
+    hasX509URL(): boolean;
+    x509URL(): string;
+    hasX509CertificateChain(): boolean;
+    x509CertificateChain(): Uint8Array[];
+    hasX509CertificateSHA1Thumbprint(): boolean;
+    x509CertificateSHA1Thumbprint(): Uint8Array;
+    hasX509CertificateSHA256Thumbprint(): boolean;
+    x509CertificateSHA256Thumbprint(): Uint8Array;
+    hasType(): boolean;
+    type(): string;
+    hasContentType(): boolean;
+    contentType(): string;
+    hasCritical(): boolean;
+    critical(): string[];
+}
+export declare const joseAlgorithmHS256 = "HS256";
+export declare const joseAlgorithmES256 = "ES256";
+export declare const joseAlgorithmRS256 = "RS256";

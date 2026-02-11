@@ -1,0 +1,1 @@
+{"version":3,"file":"facebook.d.ts","sourceRoot":"","sources":["../../../src/adapter/facebook.ts"],"names":[],"mappings":"AAAA,OAAO,EAAiB,mBAAmB,EAAE,MAAM,aAAa,CAAA;AAChE,OAAO,EAAe,iBAAiB,EAAE,MAAM,WAAW,CAAA;AAE1D,wBAAgB,eAAe,CAAC,MAAM,EAAE,mBAAmB;;;;;;EAS1D;AAED,wBAAgB,mBAAmB,CAAC,MAAM,EAAE,iBAAiB;;;;;;EAM5D"}

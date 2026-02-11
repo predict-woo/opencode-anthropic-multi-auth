@@ -1,0 +1,22 @@
+{
+  "name": "anthropic-multi-auth",
+  "version": "0.1.0",
+  "description": "Multi-account Anthropic auth plugin for OpenCode",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "scripts": {
+    "build": "bun build ./src/index.ts --outfile dist/index.mjs --format esm --target node",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "^0.4.45",
+    "@openauthjs/openauth": "^0.1.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "dependencies": {}
+}

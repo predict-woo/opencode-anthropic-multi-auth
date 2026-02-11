@@ -1,0 +1,1 @@
+{"version":3,"file":"cognito.d.ts","sourceRoot":"","sources":["../../../src/adapter/cognito.ts"],"names":[],"mappings":"AAAA,OAAO,EAAiB,mBAAmB,EAAE,MAAM,aAAa,CAAA;AAEhE,MAAM,WAAW,aAAc,SAAQ,mBAAmB;IACxD,MAAM,EAAE,MAAM,CAAA;IACd,MAAM,EAAE,MAAM,CAAA;CACf;AAED,wBAAgB,cAAc,CAAC,MAAM,EAAE,aAAa;;;;;;EAWnD"}
