@@ -1,12 +1,27 @@
 {
   "name": "anthropic-multi-auth",
   "version": "0.1.0",
-  "description": "Multi-account Anthropic auth plugin for OpenCode",
+  "description": "Multi-account Anthropic auth plugin for OpenCode with quota-aware load balancing",
   "type": "module",
   "main": "./dist/index.mjs",
   "exports": {
     ".": "./dist/index.mjs"
   },
+  "keywords": [
+    "opencode",
+    "anthropic",
+    "claude",
+    "auth",
+    "multi-account",
+    "oauth",
+    "plugin"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
     "build": "bun build ./src/index.ts --outfile dist/index.mjs --format esm --target node",
     "test": "vitest run",
