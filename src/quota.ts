@@ -5,12 +5,12 @@ const USAGE_ENDPOINT = "https://api.anthropic.com/api/oauth/usage";
 const REQUEST_TIMEOUT_MS = 10_000;
 
 function getUtilization(quota: QuotaResponse): number | null {
-  if (typeof quota.five_hour?.utilization === "number") {
-    return quota.five_hour.utilization;
-  }
-
   if (typeof quota.seven_day?.utilization === "number") {
     return quota.seven_day.utilization;
+  }
+
+  if (typeof quota.five_hour?.utilization === "number") {
+    return quota.five_hour.utilization;
   }
 
   return null;

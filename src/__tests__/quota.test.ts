@@ -105,7 +105,39 @@ describe("quota", () => {
     await expect(fetchQuota("token-abc")).resolves.toBeNull();
   });
 
-  it("selectBestAccount picks account with lowest five_hour utilization", async () => {
+  it("selectBestAccount picks account with lowest seven_day utilization when available", async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(
+        jsonResponse(200, {
+          five_hour: { utilization: 10 },
+          seven_day: { utilization: 80 },
+        }),
+      )
+      .mockResolvedValueOnce(
+        jsonResponse(200, {
+          five_hour: { utilization: 90 },
+          seven_day: { utilization: 20 },
+        }),
+      )
+      .mockResolvedValueOnce(
+        jsonResponse(200, {
+          five_hour: { utilization: 5 },
+          seven_day: { utilization: 60 },
+        }),
+      );
+    globalThis.fetch = fetchMock as unknown as typeof fetch;
+
+    const accounts = [
+      makeAccount({ refresh: "r0", access: "a0" }),
+      makeAccount({ refresh: "r1", access: "a1" }),
+      makeAccount({ refresh: "r2", access: "a2" }),
+    ];
+
+    await expect(selectBestAccount(accounts)).resolves.toBe(1);
+  });
+
+  it("selectBestAccount falls back to five_hour utilization when seven_day is missing", async () => {
     const fetchMock = vi
       .fn()
       .mockResolvedValueOnce(jsonResponse(200, { five_hour: { utilization: 80 } }))

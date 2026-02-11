@@ -10,6 +10,7 @@ Multi-account Anthropic auth plugin for OpenCode with quota-aware load balancing
 - **Automatic failover**: On 429 rate limit errors, automatically switches to the next available account
 - **Token refresh**: Automatically refreshes OAuth tokens when expired
 - **Account management**: List and remove accounts via interactive CLI
+- **Usage inspection**: View per-account Anthropic quota utilization from the login menu
 - **First-time migration**: Automatically imports accounts from OpenAuth if available
 
 ## Installation
@@ -43,6 +44,16 @@ opencode auth login
 ```
 
 Select **"Manage Accounts"** to see your accounts and remove ones you no longer need.
+
+### Viewing Account Usage
+
+To view current utilization for all configured accounts:
+
+```bash
+opencode auth login
+```
+
+Select **"View Account Usage"** to print each account's status and usage utilization.
 
 ## How It Works
 

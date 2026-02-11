@@ -1,0 +1,61 @@
+{
+  "timestamp_utc": "20260211-122059",
+  "seed": 20260211,
+  "trials": 1000,
+  "policies": [
+    "five_hour_first",
+    "seven_day_first",
+    "weighted_score",
+    "reset_aware_weekly_priority"
+  ],
+  "summary": [
+    {
+      "policy": "seven_day_first",
+      "trials": 1000.0,
+      "served_ratio_mean": 0.8515912990392035,
+      "peak_served_ratio_mean": 0.8433018749533326,
+      "denial_rate_mean": 0.14840870096079734,
+      "migration_recovery_mean": 0.8486927526773022,
+      "weekly_drift_mean": 0.0017063312963296487,
+      "mean_seven_day_utilization_mean": 0.7870448526157681,
+      "objective_score_mean": 0.8127771430993149,
+      "rank": 1.0
+    },
+    {
+      "policy": "reset_aware_weekly_priority",
+      "trials": 1000.0,
+      "served_ratio_mean": 0.8515353163944476,
+      "peak_served_ratio_mean": 0.8430861004616196,
+      "denial_rate_mean": 0.14846468360555187,
+      "migration_recovery_mean": 0.8217356903619263,
+      "weekly_drift_mean": 0.021986881789393578,
+      "mean_seven_day_utilization_mean": 0.7874300002370459,
+      "objective_score_mean": 0.8066509119905724,
+      "rank": 2.0
+    },
+    {
+      "policy": "weighted_score",
+      "trials": 1000.0,
+      "served_ratio_mean": 0.8512619196827373,
+      "peak_served_ratio_mean": 0.8425279129806633,
+      "denial_rate_mean": 0.1487380803172631,
+      "migration_recovery_mean": 0.8110995754198181,
+      "weekly_drift_mean": 0.01381602529886811,
+      "mean_seven_day_utilization_mean": 0.7875794879163256,
+      "objective_score_mean": 0.8055566045978005,
+      "rank": 3.0
+    },
+    {
+      "policy": "five_hour_first",
+      "trials": 1000.0,
+      "served_ratio_mean": 0.8514620883701657,
+      "peak_served_ratio_mean": 0.8419232799887485,
+      "denial_rate_mean": 0.14853791162983393,
+      "migration_recovery_mean": 0.7301325996303384,
+      "weekly_drift_mean": 0.033270078807104045,
+      "mean_seven_day_utilization_mean": 0.7913199620747304,
+      "objective_score_mean": 0.791829160127617,
+      "rank": 4.0
+    }
+  ]
+}

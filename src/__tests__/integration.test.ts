@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import readline from "node:readline";
 import { randomUUID } from "node:crypto";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AnthropicMultiAuthPlugin } from "../index";
@@ -78,15 +79,60 @@ describe("integration", () => {
     expect(output.system[1]).toBe("You are Claude Code, Anthropic's official CLI for Claude.\n\nHello");
   });
 
-  it("returns two auth methods", async () => {
+  it("returns three auth methods", async () => {
     const client = makeClient();
     const hooks = await AnthropicMultiAuthPlugin({ client } as any);
     const methods = (hooks as any).auth.methods;
-    expect(methods).toHaveLength(2);
+    expect(methods).toHaveLength(3);
     expect(methods[0].label).toBe("Claude Pro/Max");
     expect(methods[0].type).toBe("oauth");
-    expect(methods[1].label).toBe("Manage Accounts");
+    expect(methods[1].label).toBe("View Account Usage");
     expect(methods[1].type).toBe("oauth");
+    expect(methods[2].label).toBe("Manage Accounts");
+    expect(methods[2].type).toBe("oauth");
+  });
+
+  it("uses auto OAuth flow for non-login menu actions", async () => {
+    const account = makeAccount({ refresh: "r1", access: "a1", expires: Date.now() + 3_600_000 });
+    vi.spyOn(storage, "loadAccounts").mockReturnValue({
+      version: 1,
+      accounts: [account],
+      activeIndex: 0,
+    });
+    vi.spyOn(quota, "fetchQuota").mockResolvedValue({
+      five_hour: { utilization: 0.12 },
+    });
+
+    vi.spyOn(readline, "createInterface").mockReturnValue({
+      question(_prompt: string, callback: (answer: string) => void) {
+        callback("");
+      },
+      close() {},
+    } as any);
+
+    const client = makeClient();
+    const hooks = await AnthropicMultiAuthPlugin({ client } as any);
+    const methods = (hooks as any).auth.methods;
+
+    const usageAuth = await methods[1].authorize();
+    expect(usageAuth.method).toBe("auto");
+    await expect(usageAuth.callback()).resolves.toEqual(
+      expect.objectContaining({
+        type: "success",
+        refresh: "r1",
+        access: "a1",
+      }),
+    );
+
+    const manageAuth = await methods[2].authorize();
+    expect(manageAuth.method).toBe("auto");
+    await expect(manageAuth.callback()).resolves.toEqual(
+      expect.objectContaining({
+        type: "success",
+        refresh: "r1",
+        access: "a1",
+      }),
+    );
   });
 
   describe("loader", () => {

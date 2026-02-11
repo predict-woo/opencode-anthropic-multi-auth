@@ -1,0 +1,283 @@
+{
+  "timestamp_utc": "20260211-123927",
+  "seed": 20260211,
+  "trials": 200,
+  "scenario_mode": "focused",
+  "reset_mode": "mixed",
+  "policies": [
+    "five_hour_first",
+    "seven_day_first",
+    "weighted_score",
+    "reset_aware_weekly_priority",
+    "reset_stagger_pressure",
+    "reset_near_expiry_reserve"
+  ],
+  "summary": [
+    {
+      "policy": "seven_day_first",
+      "trials": 200.0,
+      "served_ratio_mean": 0.7269820187995993,
+      "peak_served_ratio_mean": 0.6980361599992496,
+      "denial_rate_mean": 0.2730179812004001,
+      "migration_recovery_mean": 0.613849973561238,
+      "peak_useful_five_hour_mean": 0.5879484126984122,
+      "weekly_drift_mean": 0.002240273412060078,
+      "mean_seven_day_utilization_mean": 0.9517723892213588,
+      "objective_score_mean": 0.7228266540955509,
+      "rank": 1.0
+    },
+    {
+      "policy": "reset_aware_weekly_priority",
+      "trials": 200.0,
+      "served_ratio_mean": 0.7278977795525734,
+      "peak_served_ratio_mean": 0.6982413299739347,
+      "denial_rate_mean": 0.27210222044742627,
+      "migration_recovery_mean": 0.5413574113149972,
+      "peak_useful_five_hour_mean": 0.6006808390022683,
+      "weekly_drift_mean": 0.0060519132456615,
+      "mean_seven_day_utilization_mean": 0.9524540977188467,
+      "objective_score_mean": 0.7164810643602568,
+      "rank": 2.0
+    },
+    {
+      "policy": "weighted_score",
+      "trials": 200.0,
+      "served_ratio_mean": 0.728049231684333,
+      "peak_served_ratio_mean": 0.6972454933454842,
+      "denial_rate_mean": 0.27195076831566783,
+      "migration_recovery_mean": 0.49552534605420284,
+      "peak_useful_five_hour_mean": 0.5980763888888894,
+      "weekly_drift_mean": 0.010267136594350497,
+      "mean_seven_day_utilization_mean": 0.952598681204764,
+      "objective_score_mean": 0.7099525898576994,
+      "rank": 3.0
+    },
+    {
+      "policy": "reset_stagger_pressure",
+      "trials": 200.0,
+      "served_ratio_mean": 0.7233768465847403,
+      "peak_served_ratio_mean": 0.6900686502041252,
+      "denial_rate_mean": 0.27662315341525945,
+      "migration_recovery_mean": 0.4858666115468133,
+      "peak_useful_five_hour_mean": 0.5664654195011367,
+      "weekly_drift_mean": 0.03898532103626977,
+      "mean_seven_day_utilization_mean": 0.9506758844079581,
+      "objective_score_mean": 0.6956217567867451,
+      "rank": 4.0
+    },
+    {
+      "policy": "reset_near_expiry_reserve",
+      "trials": 200.0,
+      "served_ratio_mean": 0.7206598200896477,
+      "peak_served_ratio_mean": 0.6869585882111241,
+      "denial_rate_mean": 0.2793401799103524,
+      "migration_recovery_mean": 0.4436757847058385,
+      "peak_useful_five_hour_mean": 0.5581557539682579,
+      "weekly_drift_mean": 0.04393719433068109,
+      "mean_seven_day_utilization_mean": 0.9493819710210595,
+      "objective_score_mean": 0.6859871573875783,
+      "rank": 5.0
+    },
+    {
+      "policy": "five_hour_first",
+      "trials": 200.0,
+      "served_ratio_mean": 0.7232336162705599,
+      "peak_served_ratio_mean": 0.6894079907565378,
+      "denial_rate_mean": 0.27676638372944035,
+      "migration_recovery_mean": 0.22722486302616038,
+      "peak_useful_five_hour_mean": 0.5837236394557849,
+      "weekly_drift_mean": 0.030683198009762797,
+      "mean_seven_day_utilization_mean": 0.9528188263922551,
+      "objective_score_mean": 0.6681035680290225,
+      "rank": 6.0
+    }
+  ],
+  "summary_by_reset_class": {
+    "same_reset": [
+      {
+        "policy": "seven_day_first",
+        "trials": 104.0,
+        "served_ratio_mean": 0.7499887901333022,
+        "peak_served_ratio_mean": 0.7238982424938019,
+        "denial_rate_mean": 0.25001120986669806,
+        "migration_recovery_mean": 0.6237170467287221,
+        "peak_useful_five_hour_mean": 0.6264981793999647,
+        "weekly_drift_mean": 0.002840301941439807,
+        "mean_seven_day_utilization_mean": 0.9365177413235882,
+        "objective_score_mean": 0.7506160208804438,
+        "rank": 1.0
+      },
+      {
+        "policy": "reset_aware_weekly_priority",
+        "trials": 104.0,
+        "served_ratio_mean": 0.7506149740676319,
+        "peak_served_ratio_mean": 0.723308224590199,
+        "denial_rate_mean": 0.24938502593236783,
+        "migration_recovery_mean": 0.5595703670983769,
+        "peak_useful_five_hour_mean": 0.6390763997906852,
+        "weekly_drift_mean": 0.00642051964064505,
+        "mean_seven_day_utilization_mean": 0.9374524982856816,
+        "objective_score_mean": 0.7448776171818102,
+        "rank": 2.0
+      },
+      {
+        "policy": "weighted_score",
+        "trials": 104.0,
+        "served_ratio_mean": 0.751219899443426,
+        "peak_served_ratio_mean": 0.7231633599628267,
+        "denial_rate_mean": 0.24878010055657385,
+        "migration_recovery_mean": 0.5156389934910529,
+        "peak_useful_five_hour_mean": 0.6361737964416541,
+        "weekly_drift_mean": 0.013126524411107617,
+        "mean_seven_day_utilization_mean": 0.9379557064107069,
+        "objective_score_mean": 0.738852750493323,
+        "rank": 3.0
+      },
+      {
+        "policy": "reset_stagger_pressure",
+        "trials": 104.0,
+        "served_ratio_mean": 0.7453010066705847,
+        "peak_served_ratio_mean": 0.7143967938832976,
+        "denial_rate_mean": 0.2546989933294153,
+        "migration_recovery_mean": 0.44685582549425296,
+        "peak_useful_five_hour_mean": 0.6037417691435601,
+        "weekly_drift_mean": 0.049072932457512285,
+        "mean_seven_day_utilization_mean": 0.9380565115031023,
+        "objective_score_mean": 0.715525402327591,
+        "rank": 4.0
+      },
+      {
+        "policy": "reset_near_expiry_reserve",
+        "trials": 104.0,
+        "served_ratio_mean": 0.7419547208505399,
+        "peak_served_ratio_mean": 0.7100582527679937,
+        "denial_rate_mean": 0.25804527914946035,
+        "migration_recovery_mean": 0.3875647073663704,
+        "peak_useful_five_hour_mean": 0.5933368219082561,
+        "weekly_drift_mean": 0.05635605043205708,
+        "mean_seven_day_utilization_mean": 0.9368151193425673,
+        "objective_score_mean": 0.7025169660380691,
+        "rank": 5.0
+      },
+      {
+        "policy": "five_hour_first",
+        "trials": 104.0,
+        "served_ratio_mean": 0.7460392456027509,
+        "peak_served_ratio_mean": 0.7158873453662238,
+        "denial_rate_mean": 0.2539607543972492,
+        "migration_recovery_mean": 0.27867589627998673,
+        "peak_useful_five_hour_mean": 0.6206668083900269,
+        "weekly_drift_mean": 0.03910630906277238,
+        "mean_seven_day_utilization_mean": 0.9376726686830529,
+        "objective_score_mean": 0.6999149687416035,
+        "rank": 6.0
+      }
+    ],
+    "staggered_reset": [
+      {
+        "policy": "seven_day_first",
+        "trials": 96.0,
+        "served_ratio_mean": 0.7020580165214222,
+        "peak_served_ratio_mean": 0.6700189039634844,
+        "denial_rate_mean": 0.2979419834785777,
+        "migration_recovery_mean": 0.6031606442964638,
+        "peak_useful_five_hour_mean": 0.5461861654383967,
+        "weekly_drift_mean": 0.0015902425052320378,
+        "mean_seven_day_utilization_mean": 0.9682982577772755,
+        "objective_score_mean": 0.6927215067452508,
+        "rank": 1.0
+      },
+      {
+        "policy": "reset_aware_weekly_priority",
+        "trials": 96.0,
+        "served_ratio_mean": 0.7032874854945937,
+        "peak_served_ratio_mean": 0.671085527472982,
+        "denial_rate_mean": 0.2967125145054062,
+        "migration_recovery_mean": 0.5216267092163348,
+        "peak_useful_five_hour_mean": 0.5590856481481492,
+        "weekly_drift_mean": 0.0056525896510959866,
+        "mean_seven_day_utilization_mean": 0.9687058304381092,
+        "objective_score_mean": 0.6857181321369081,
+        "rank": 2.0
+      },
+      {
+        "policy": "weighted_score",
+        "trials": 96.0,
+        "served_ratio_mean": 0.7029476749453143,
+        "peak_served_ratio_mean": 0.6691678045100303,
+        "denial_rate_mean": 0.29705232505468565,
+        "migration_recovery_mean": 0.47373556133094846,
+        "peak_useful_five_hour_mean": 0.556804197373394,
+        "weekly_drift_mean": 0.0071694664595302856,
+        "mean_seven_day_utilization_mean": 0.9684619038983255,
+        "objective_score_mean": 0.6786440825024403,
+        "rank": 3.0
+      },
+      {
+        "policy": "reset_stagger_pressure",
+        "trials": 96.0,
+        "served_ratio_mean": 0.6996256731584092,
+        "peak_served_ratio_mean": 0.6637131612183553,
+        "denial_rate_mean": 0.3003743268415903,
+        "migration_recovery_mean": 0.5281282964370868,
+        "peak_useful_five_hour_mean": 0.5260827073885116,
+        "weekly_drift_mean": 0.02805707532992374,
+        "mean_seven_day_utilization_mean": 0.9643468717215521,
+        "objective_score_mean": 0.6740594741174956,
+        "rank": 4.0
+      },
+      {
+        "policy": "reset_near_expiry_reserve",
+        "trials": 96.0,
+        "served_ratio_mean": 0.6975903442653478,
+        "peak_served_ratio_mean": 0.6619339516078484,
+        "denial_rate_mean": 0.30240965573465234,
+        "migration_recovery_mean": 0.5044627851569282,
+        "peak_useful_five_hour_mean": 0.5200429303665937,
+        "weekly_drift_mean": 0.030483433554190417,
+        "mean_seven_day_utilization_mean": 0.9629960603394251,
+        "objective_score_mean": 0.6680798646828802,
+        "rank": 5.0
+      },
+      {
+        "policy": "five_hour_first",
+        "trials": 96.0,
+        "served_ratio_mean": 0.6985275178273523,
+        "peak_served_ratio_mean": 0.6607220232627116,
+        "denial_rate_mean": 0.3014724821726474,
+        "migration_recovery_mean": 0.17148624366784815,
+        "peak_useful_five_hour_mean": 0.5437018731103566,
+        "weekly_drift_mean": 0.021558161035669057,
+        "mean_seven_day_utilization_mean": 0.9692271639105576,
+        "objective_score_mean": 0.6336412172570599,
+        "rank": 6.0
+      }
+    ]
+  },
+  "winner_counts_by_reset_class": {
+    "same_reset": {
+      "reset_near_expiry_reserve": 6,
+      "seven_day_first": 98,
+      "tie": 0
+    },
+    "staggered_reset": {
+      "reset_near_expiry_reserve": 20,
+      "seven_day_first": 76,
+      "tie": 0
+    }
+  },
+  "head_to_head": {
+    "challenger_policy": "reset_near_expiry_reserve",
+    "baseline_policy": "seven_day_first",
+    "by_reset_class": {
+      "same_reset": {
+        "avg_objective_delta": -0.04809905484237464,
+        "samples": 104.0
+      },
+      "staggered_reset": {
+        "avg_objective_delta": -0.024641642062370617,
+        "samples": 96.0
+      }
+    }
+  }
+}

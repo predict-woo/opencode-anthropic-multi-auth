@@ -1,0 +1,283 @@
+{
+  "timestamp_utc": "20260211-123817",
+  "seed": 20260211,
+  "trials": 200,
+  "scenario_mode": "focused",
+  "reset_mode": "mixed",
+  "policies": [
+    "five_hour_first",
+    "seven_day_first",
+    "weighted_score",
+    "reset_aware_weekly_priority",
+    "reset_stagger_pressure",
+    "reset_near_expiry_reserve"
+  ],
+  "summary": [
+    {
+      "policy": "seven_day_first",
+      "trials": 200.0,
+      "served_ratio_mean": 0.13420028123767846,
+      "peak_served_ratio_mean": 0.10134682644738968,
+      "denial_rate_mean": 0.8657997187623216,
+      "migration_recovery_mean": 0.12465646066872366,
+      "peak_useful_five_hour_mean": 0.0494604591836735,
+      "weekly_drift_mean": 0.0,
+      "mean_seven_day_utilization_mean": 1.0,
+      "objective_score_mean": 0.03648067105121215,
+      "rank": 1.0
+    },
+    {
+      "policy": "weighted_score",
+      "trials": 200.0,
+      "served_ratio_mean": 0.13444679613035831,
+      "peak_served_ratio_mean": 0.10182836013764308,
+      "denial_rate_mean": 0.8655532038696414,
+      "migration_recovery_mean": 0.09640642415136677,
+      "peak_useful_five_hour_mean": 0.05229889455782313,
+      "weekly_drift_mean": 0.0,
+      "mean_seven_day_utilization_mean": 1.0,
+      "objective_score_mean": 0.03384211566953077,
+      "rank": 2.0
+    },
+    {
+      "policy": "reset_aware_weekly_priority",
+      "trials": 200.0,
+      "served_ratio_mean": 0.13429945115986772,
+      "peak_served_ratio_mean": 0.10166878439666473,
+      "denial_rate_mean": 0.865700548840133,
+      "migration_recovery_mean": 0.0942021141280196,
+      "peak_useful_five_hour_mean": 0.05379237528344671,
+      "weekly_drift_mean": 0.0,
+      "mean_seven_day_utilization_mean": 1.0,
+      "objective_score_mean": 0.033677328778831186,
+      "rank": 3.0
+    },
+    {
+      "policy": "reset_near_expiry_reserve",
+      "trials": 200.0,
+      "served_ratio_mean": 0.13433988173150177,
+      "peak_served_ratio_mean": 0.1017007132128313,
+      "denial_rate_mean": 0.8656601182684983,
+      "migration_recovery_mean": 0.07342976334849675,
+      "peak_useful_five_hour_mean": 0.05295762471655328,
+      "weekly_drift_mean": 0.0,
+      "mean_seven_day_utilization_mean": 1.0,
+      "objective_score_mean": 0.031085732193848598,
+      "rank": 4.0
+    },
+    {
+      "policy": "reset_stagger_pressure",
+      "trials": 200.0,
+      "served_ratio_mean": 0.13443608687305322,
+      "peak_served_ratio_mean": 0.10185742192494826,
+      "denial_rate_mean": 0.8655639131269468,
+      "migration_recovery_mean": 0.06788269450025017,
+      "peak_useful_five_hour_mean": 0.05398356009070296,
+      "weekly_drift_mean": 0.0,
+      "mean_seven_day_utilization_mean": 1.0,
+      "objective_score_mean": 0.030690893393319922,
+      "rank": 5.0
+    },
+    {
+      "policy": "five_hour_first",
+      "trials": 200.0,
+      "served_ratio_mean": 0.13425074859482958,
+      "peak_served_ratio_mean": 0.10172233560921233,
+      "denial_rate_mean": 0.8657492514051703,
+      "migration_recovery_mean": 0.005436428534605049,
+      "peak_useful_five_hour_mean": 0.054610969387755094,
+      "weekly_drift_mean": 0.0,
+      "mean_seven_day_utilization_mean": 1.0,
+      "objective_score_mean": 0.02314229133775148,
+      "rank": 6.0
+    }
+  ],
+  "summary_by_reset_class": {
+    "same_reset": [
+      {
+        "policy": "seven_day_first",
+        "trials": 104.0,
+        "served_ratio_mean": 0.1407372312031917,
+        "peak_served_ratio_mean": 0.10676995361982929,
+        "denial_rate_mean": 0.8592627687968081,
+        "migration_recovery_mean": 0.13294746619444406,
+        "peak_useful_five_hour_mean": 0.05170504099075531,
+        "weekly_drift_mean": 0.0,
+        "mean_seven_day_utilization_mean": 1.0,
+        "objective_score_mean": 0.04351457193378182,
+        "rank": 1.0
+      },
+      {
+        "policy": "weighted_score",
+        "trials": 104.0,
+        "served_ratio_mean": 0.14113348336706297,
+        "peak_served_ratio_mean": 0.10760835703624501,
+        "denial_rate_mean": 0.858866516632937,
+        "migration_recovery_mean": 0.10285488862006292,
+        "peak_useful_five_hour_mean": 0.05539093842665269,
+        "weekly_drift_mean": 0.0,
+        "mean_seven_day_utilization_mean": 1.0,
+        "objective_score_mean": 0.0409904035811245,
+        "rank": 2.0
+      },
+      {
+        "policy": "reset_aware_weekly_priority",
+        "trials": 104.0,
+        "served_ratio_mean": 0.1408219062076933,
+        "peak_served_ratio_mean": 0.10708539895469217,
+        "denial_rate_mean": 0.8591780937923068,
+        "migration_recovery_mean": 0.10415806112323443,
+        "peak_useful_five_hour_mean": 0.05632249694749694,
+        "weekly_drift_mean": 0.0,
+        "mean_seven_day_utilization_mean": 1.0,
+        "objective_score_mean": 0.0409457683815651,
+        "rank": 3.0
+      },
+      {
+        "policy": "reset_stagger_pressure",
+        "trials": 104.0,
+        "served_ratio_mean": 0.14118031397493885,
+        "peak_served_ratio_mean": 0.10761521951342079,
+        "denial_rate_mean": 0.8588196860250612,
+        "migration_recovery_mean": 0.05960858589072444,
+        "peak_useful_five_hour_mean": 0.057525510204081615,
+        "weekly_drift_mean": 0.0,
+        "mean_seven_day_utilization_mean": 1.0,
+        "objective_score_mean": 0.03617347245802831,
+        "rank": 4.0
+      },
+      {
+        "policy": "reset_near_expiry_reserve",
+        "trials": 104.0,
+        "served_ratio_mean": 0.14090227800704905,
+        "peak_served_ratio_mean": 0.10741876817976165,
+        "denial_rate_mean": 0.8590977219929511,
+        "migration_recovery_mean": 0.058965123396824165,
+        "peak_useful_five_hour_mean": 0.05616305817198667,
+        "weekly_drift_mean": 0.0,
+        "mean_seven_day_utilization_mean": 1.0,
+        "objective_score_mean": 0.035646946933435654,
+        "rank": 5.0
+      },
+      {
+        "policy": "five_hour_first",
+        "trials": 104.0,
+        "served_ratio_mean": 0.14093243832747507,
+        "peak_served_ratio_mean": 0.10734577648740723,
+        "denial_rate_mean": 0.859067561672525,
+        "migration_recovery_mean": 0.005911503046944001,
+        "peak_useful_five_hour_mean": 0.05755412742019878,
+        "weekly_drift_mean": 0.0,
+        "mean_seven_day_utilization_mean": 1.0,
+        "objective_score_mean": 0.029499885462121764,
+        "rank": 6.0
+      }
+    ],
+    "staggered_reset": [
+      {
+        "policy": "seven_day_first",
+        "trials": 96.0,
+        "served_ratio_mean": 0.1271185854417059,
+        "peak_served_ratio_mean": 0.09547177201058003,
+        "denial_rate_mean": 0.8728814145582939,
+        "migration_recovery_mean": 0.11567453801585974,
+        "peak_useful_five_hour_mean": 0.04702882889266816,
+        "weekly_drift_mean": 0.0,
+        "mean_seven_day_utilization_mean": 1.0,
+        "objective_score_mean": 0.02886061176176173,
+        "rank": 1.0
+      },
+      {
+        "policy": "reset_near_expiry_reserve",
+        "trials": 96.0,
+        "served_ratio_mean": 0.12723061909965885,
+        "peak_served_ratio_mean": 0.09550615366532332,
+        "denial_rate_mean": 0.8727693809003411,
+        "migration_recovery_mean": 0.0890997899628088,
+        "peak_useful_five_hour_mean": 0.049485071806500434,
+        "weekly_drift_mean": 0.0,
+        "mean_seven_day_utilization_mean": 1.0,
+        "objective_score_mean": 0.026144416225962617,
+        "rank": 2.0
+      },
+      {
+        "policy": "weighted_score",
+        "trials": 96.0,
+        "served_ratio_mean": 0.1272028849572616,
+        "peak_served_ratio_mean": 0.09556669683082437,
+        "denial_rate_mean": 0.8727971150427387,
+        "migration_recovery_mean": 0.08942058764361262,
+        "peak_useful_five_hour_mean": 0.04894918036659107,
+        "weekly_drift_mean": 0.0,
+        "mean_seven_day_utilization_mean": 1.0,
+        "objective_score_mean": 0.02609813709863758,
+        "rank": 3.0
+      },
+      {
+        "policy": "reset_aware_weekly_priority",
+        "trials": 96.0,
+        "served_ratio_mean": 0.1272334581913899,
+        "peak_served_ratio_mean": 0.09580078529213493,
+        "denial_rate_mean": 0.87276654180861,
+        "migration_recovery_mean": 0.08341650488320342,
+        "peak_useful_five_hour_mean": 0.05105141014739229,
+        "weekly_drift_mean": 0.0,
+        "mean_seven_day_utilization_mean": 1.0,
+        "objective_score_mean": 0.025803185875869387,
+        "rank": 4.0
+      },
+      {
+        "policy": "reset_stagger_pressure",
+        "trials": 96.0,
+        "served_ratio_mean": 0.12712984084601037,
+        "peak_served_ratio_mean": 0.09561980787076968,
+        "denial_rate_mean": 0.8728701591539897,
+        "migration_recovery_mean": 0.07684631216056981,
+        "peak_useful_five_hour_mean": 0.050146447467876054,
+        "weekly_drift_mean": 0.0,
+        "mean_seven_day_utilization_mean": 1.0,
+        "objective_score_mean": 0.024751432739885837,
+        "rank": 5.0
+      },
+      {
+        "policy": "five_hour_first",
+        "trials": 96.0,
+        "served_ratio_mean": 0.1270122513844638,
+        "peak_served_ratio_mean": 0.09563027465783457,
+        "denial_rate_mean": 0.8729877486155359,
+        "migration_recovery_mean": 0.0049217644795711835,
+        "peak_useful_five_hour_mean": 0.051422548185941046,
+        "weekly_drift_mean": 0.0,
+        "mean_seven_day_utilization_mean": 1.0,
+        "objective_score_mean": 0.016254897703017,
+        "rank": 6.0
+      }
+    ]
+  },
+  "winner_counts_by_reset_class": {
+    "same_reset": {
+      "reset_near_expiry_reserve": 5,
+      "seven_day_first": 99,
+      "tie": 0
+    },
+    "staggered_reset": {
+      "reset_near_expiry_reserve": 27,
+      "seven_day_first": 69,
+      "tie": 0
+    }
+  },
+  "head_to_head": {
+    "challenger_policy": "reset_near_expiry_reserve",
+    "baseline_policy": "seven_day_first",
+    "by_reset_class": {
+      "same_reset": {
+        "avg_objective_delta": -0.007867625000346145,
+        "samples": 104.0
+      },
+      "staggered_reset": {
+        "avg_objective_delta": -0.0027161955357991063,
+        "samples": 96.0
+      }
+    }
+  }
+}

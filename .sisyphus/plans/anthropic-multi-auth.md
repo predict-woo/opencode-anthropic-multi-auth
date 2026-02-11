@@ -80,13 +80,13 @@ Build a drop-in replacement for `opencode-anthropic-auth` that supports multiple
 - README with installation and usage instructions
 
 ### Definition of Done
-- [ ] `bun test` passes with 0 failures
-- [ ] `bun run build` produces valid `index.mjs`
-- [ ] Plugin installs in OpenCode via `"plugin": ["anthropic-multi-auth"]`
-- [ ] Can login with 2+ accounts via `opencode auth login`
-- [ ] On new session, automatically selects lowest-usage account
-- [ ] On 429 error, automatically switches to different account
-- [ ] All original plugin transformations work (tool prefixing, system prompt, beta headers)
+- [x] `bun test` passes with 0 failures
+- [x] `bun run build` produces valid `index.mjs`
+- [x] Plugin installs in OpenCode via `"plugin": ["anthropic-multi-auth"]`
+- [x] Can login with 2+ accounts via `opencode auth login`
+- [x] On new session, automatically selects lowest-usage account
+- [x] On 429 error, automatically switches to different account
+- [x] All original plugin transformations work (tool prefixing, system prompt, beta headers)
 
 ### Must Have
 - OAuth PKCE login flow identical to original plugin
@@ -194,7 +194,7 @@ All other tasks: Sequential
 
 ## TODOs
 
-- [ ] 1. Project Scaffold & Test Infrastructure
+- [x] 1. Project Scaffold & Test Infrastructure
 
   **What to do**:
   - Initialize npm package with `bun init`
@@ -255,12 +255,12 @@ All other tasks: Sequential
 
   **Acceptance Criteria**:
 
-  - [ ] `package.json` exists with name "anthropic-multi-auth"
-  - [ ] `tsconfig.json` exists with strict mode
-  - [ ] `vitest.config.ts` exists
-  - [ ] Directory structure matches spec above
-  - [ ] `bun install` completes without errors
-  - [ ] `bun test` → PASS (1 smoke test)
+  - [x] `package.json` exists with name "anthropic-multi-auth"
+  - [x] `tsconfig.json` exists with strict mode
+  - [x] `vitest.config.ts` exists
+  - [x] Directory structure matches spec above
+  - [x] `bun install` completes without errors
+  - [x] `bun test` → PASS (1 smoke test)
 
   **Agent-Executed QA Scenarios:**
 
@@ -285,7 +285,7 @@ All other tasks: Sequential
 
 ---
 
-- [ ] 2. Account Storage Manager
+- [x] 2. Account Storage Manager
 
   **What to do**:
   - **RED**: Write tests in `src/__tests__/storage.test.ts`:
@@ -352,14 +352,14 @@ All other tasks: Sequential
 
   **Acceptance Criteria**:
 
-  - [ ] Tests pass: `bun test src/__tests__/storage.test.ts` → PASS (9+ tests)
-  - [ ] loadAccounts returns `{ version: 1, accounts: [], activeIndex: 0 }` for missing file
-  - [ ] addAccount correctly appends to existing accounts
-  - [ ] removeAccount correctly removes by index
-  - [ ] File written with 0o600 permissions
-  - [ ] importFromAuthJson reads existing creds from auth.json
-  - [ ] loadAccounts clears stale rateLimitedUntil values (where < Date.now())
-  - [ ] loadAccounts preserves future rateLimitedUntil values
+  - [x] Tests pass: `bun test src/__tests__/storage.test.ts` → PASS (9+ tests)
+  - [x] loadAccounts returns `{ version: 1, accounts: [], activeIndex: 0 }` for missing file
+  - [x] addAccount correctly appends to existing accounts
+  - [x] removeAccount correctly removes by index
+  - [x] File written with 0o600 permissions
+  - [x] importFromAuthJson reads existing creds from auth.json
+  - [x] loadAccounts clears stale rateLimitedUntil values (where < Date.now())
+  - [x] loadAccounts preserves future rateLimitedUntil values
 
   **Agent-Executed QA Scenarios:**
 
@@ -390,7 +390,7 @@ All other tasks: Sequential
 
 ---
 
-- [ ] 3. OAuth Flow & Token Refresh
+- [x] 3. OAuth Flow & Token Refresh
 
   **What to do**:
   - **RED**: Write tests in `src/__tests__/oauth.test.ts`:
@@ -443,14 +443,14 @@ All other tasks: Sequential
 
   **Acceptance Criteria**:
 
-  - [ ] Tests pass: `bun test src/__tests__/oauth.test.ts` → PASS (10+ tests)
-  - [ ] authorize("max") URL starts with `https://claude.ai/oauth/authorize`
-  - [ ] authorize("console") URL starts with `https://console.anthropic.com/oauth/authorize`
-  - [ ] exchange correctly parses code#state format
-  - [ ] refreshToken calls correct endpoint with refresh_token grant type
-  - [ ] refreshAllAccounts only refreshes accounts with expired tokens
-  - [ ] refreshToken syncs auth.json via client.auth.set when refreshing active account
-  - [ ] refreshToken does NOT sync auth.json when refreshing non-active account
+  - [x] Tests pass: `bun test src/__tests__/oauth.test.ts` → PASS (10+ tests)
+  - [x] authorize("max") URL starts with `https://claude.ai/oauth/authorize`
+  - [x] authorize("console") URL starts with `https://console.anthropic.com/oauth/authorize`
+  - [x] exchange correctly parses code#state format
+  - [x] refreshToken calls correct endpoint with refresh_token grant type
+  - [x] refreshAllAccounts only refreshes accounts with expired tokens
+  - [x] refreshToken syncs auth.json via client.auth.set when refreshing active account
+  - [x] refreshToken does NOT sync auth.json when refreshing non-active account
 
   **Agent-Executed QA Scenarios:**
 
@@ -482,7 +482,7 @@ All other tasks: Sequential
 
 ---
 
-- [ ] 4. Quota Checker & Account Selector
+- [x] 4. Quota Checker & Account Selector
 
   **What to do**:
   - **RED**: Write tests in `src/__tests__/quota.test.ts`:
@@ -561,13 +561,13 @@ All other tasks: Sequential
 
   **Acceptance Criteria**:
 
-  - [ ] Tests pass: `bun test src/__tests__/quota.test.ts` → PASS (8+ tests)
-  - [ ] Tests pass: `bun test src/__tests__/accounts.test.ts` → PASS (5+ tests)
-  - [ ] fetchQuota calls correct endpoint with Bearer token
-  - [ ] selectBestAccount picks lowest utilization account
-  - [ ] Rate-limited accounts are skipped
-  - [ ] Graceful fallback to round-robin when API fails
-  - [ ] AccountManager.handleRateLimit correctly switches accounts
+  - [x] Tests pass: `bun test src/__tests__/quota.test.ts` → PASS (8+ tests)
+  - [x] Tests pass: `bun test src/__tests__/accounts.test.ts` → PASS (5+ tests)
+  - [x] fetchQuota calls correct endpoint with Bearer token
+  - [x] selectBestAccount picks lowest utilization account
+  - [x] Rate-limited accounts are skipped
+  - [x] Graceful fallback to round-robin when API fails
+  - [x] AccountManager.handleRateLimit correctly switches accounts
 
   **Agent-Executed QA Scenarios:**
 
@@ -606,7 +606,7 @@ All other tasks: Sequential
 
 ---
 
-- [ ] 5. Request Transformation Layer
+- [x] 5. Request Transformation Layer
 
   **What to do**:
   - **RED**: Write tests in `src/__tests__/transform.test.ts`:
@@ -660,12 +660,12 @@ All other tasks: Sequential
 
   **Acceptance Criteria**:
 
-  - [ ] Tests pass: `bun test src/__tests__/transform.test.ts` → PASS (7+ tests)
-  - [ ] Tool names correctly prefixed with `mcp_` in both definitions and usage blocks
-  - [ ] System prompt "OpenCode" → "Claude Code" (preserving paths)
-  - [ ] Streaming response strips `mcp_` prefix
-  - [ ] Headers correctly set (Bearer, beta merge, user-agent, no x-api-key)
-  - [ ] Beta query param added to /v1/messages URL
+  - [x] Tests pass: `bun test src/__tests__/transform.test.ts` → PASS (7+ tests)
+  - [x] Tool names correctly prefixed with `mcp_` in both definitions and usage blocks
+  - [x] System prompt "OpenCode" → "Claude Code" (preserving paths)
+  - [x] Streaming response strips `mcp_` prefix
+  - [x] Headers correctly set (Bearer, beta merge, user-agent, no x-api-key)
+  - [x] Beta query param added to /v1/messages URL
 
   **Agent-Executed QA Scenarios:**
 
@@ -696,7 +696,7 @@ All other tasks: Sequential
 
 ---
 
-- [ ] 6. Plugin Entry Point — Assemble Everything
+- [x] 6. Plugin Entry Point — Assemble Everything
 
   **What to do**:
   - Implement `src/index.ts` — the main plugin export that wires everything together:
@@ -778,21 +778,21 @@ All other tasks: Sequential
 
   **Acceptance Criteria**:
 
-  - [ ] `bun run build` → produces `dist/index.mjs` without errors
-  - [ ] Plugin exports function matching `Plugin` type signature
-  - [ ] Auth hook registers with `provider: "anthropic"`
-  - [ ] Loader initializes AccountManager and selects best account on load
-  - [ ] Loader returns `{}` when no accounts configured (empty-accounts fallback)
-  - [ ] Custom fetch uses active account's Bearer token
-  - [ ] Custom fetch syncs auth.json via client.auth.set after active account token refresh
-  - [ ] Custom fetch does NOT read from getAuth() — uses own storage exclusively
-  - [ ] 429 response triggers account switch and request retry
-  - [ ] All-accounts-exhausted throws descriptive error with shortest wait time
-  - [ ] Login callback() contains the multi-account loop (readline-based, NOT after callback returns)
-  - [ ] Login flow supports adding multiple accounts with fresh PKCE per account
-  - [ ] First-time migration imports from auth.json
-  - [ ] "Manage Accounts" method shows and allows removal
-  - [ ] `bun test` → ALL tests pass (including new integration tests)
+  - [x] `bun run build` → produces `dist/index.mjs` without errors
+  - [x] Plugin exports function matching `Plugin` type signature
+  - [x] Auth hook registers with `provider: "anthropic"`
+  - [x] Loader initializes AccountManager and selects best account on load
+  - [x] Loader returns `{}` when no accounts configured (empty-accounts fallback)
+  - [x] Custom fetch uses active account's Bearer token
+  - [x] Custom fetch syncs auth.json via client.auth.set after active account token refresh
+  - [x] Custom fetch does NOT read from getAuth() — uses own storage exclusively
+  - [x] 429 response triggers account switch and request retry
+  - [x] All-accounts-exhausted throws descriptive error with shortest wait time
+  - [x] Login callback() contains the multi-account loop (readline-based, NOT after callback returns)
+  - [x] Login flow supports adding multiple accounts with fresh PKCE per account
+  - [x] First-time migration imports from auth.json
+  - [x] "Manage Accounts" method shows and allows removal
+  - [x] `bun test` → ALL tests pass (including new integration tests)
 
   **Agent-Executed QA Scenarios:**
 
@@ -836,7 +836,7 @@ All other tasks: Sequential
 
 ---
 
-- [ ] 7. README, Build Verification & Final Polish
+- [x] 7. README, Build Verification & Final Polish
 
   **What to do**:
   - Create `README.md` with:
@@ -877,11 +877,11 @@ All other tasks: Sequential
 
   **Acceptance Criteria**:
 
-  - [ ] README.md exists with installation, usage, and troubleshooting sections
-  - [ ] `bun run build` → exit code 0, dist/index.mjs exists
-  - [ ] `bun test` → exit code 0, all tests pass
-  - [ ] package.json has description, keywords, license, main, files fields
-  - [ ] .gitignore exists and excludes node_modules/dist
+  - [x] README.md exists with installation, usage, and troubleshooting sections
+  - [x] `bun run build` → exit code 0, dist/index.mjs exists
+  - [x] `bun test` → exit code 0, all tests pass
+  - [x] package.json has description, keywords, license, main, files fields
+  - [x] .gitignore exists and excludes node_modules/dist
 
   **Agent-Executed QA Scenarios:**
 
@@ -943,13 +943,13 @@ bun run build        # Expected: dist/index.mjs created
 ```
 
 ### Final Checklist
-- [ ] All "Must Have" features present
-- [ ] All "Must NOT Have" exclusions respected
-- [ ] All tests pass (`bun test`)
-- [ ] Build succeeds (`bun run build`)
-- [ ] Plugin exports valid function matching Plugin type
-- [ ] Can add multiple accounts via login flow
-- [ ] Quota API correctly selects lowest-usage account
-- [ ] 429 failover switches accounts and retries
-- [ ] All original plugin transformations work identically
-- [ ] README documents usage clearly
+- [x] All "Must Have" features present
+- [x] All "Must NOT Have" exclusions respected
+- [x] All tests pass (`bun test`)
+- [x] Build succeeds (`bun run build`)
+- [x] Plugin exports valid function matching Plugin type
+- [x] Can add multiple accounts via login flow
+- [x] Quota API correctly selects lowest-usage account
+- [x] 429 failover switches accounts and retries
+- [x] All original plugin transformations work identically
+- [x] README documents usage clearly
